@@ -38,7 +38,7 @@ Basic setup to be able to run [levindabhi/cloth-segmentation](https://github.com
    To upload:
    
    ```bash
-     gcloud compute scp <local-file> nvidia-cuda:~/cloth-segmentation-setup/input-images
+     gcloud compute scp <local-file> <instance name>:~/cloth-segmentation-setup/input-images
    ``` 
 
  * Run `setup.sh` and then `run.sh`:
