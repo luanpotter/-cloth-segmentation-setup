@@ -22,7 +22,7 @@ Basic setup to be able to run [levindabhi/cloth-segmentation](https://github.com
  * Clone this repo
 
    ```bash
-   sudo apt-get install -y git
+   sudo apt-get update && sudo apt-get install -y git
    git clone https://github.com/luanpotter/cloth-segmentation-setup.git
    ```
 
@@ -35,7 +35,13 @@ Basic setup to be able to run [levindabhi/cloth-segmentation](https://github.com
    url.com/to/image2.png
    ```
 
- * Run `setup.sh` and then `./run.sh`:
+   To upload:
+   
+   ```bash
+     gcloud compute scp <local-file> nvidia-cuda:~/cloth-segmentation-setup/input-images
+   ``` 
+
+ * Run `setup.sh` and then `run.sh`:
 
    ```bash
    ./setup.sh
