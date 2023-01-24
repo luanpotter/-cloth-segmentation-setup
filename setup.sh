@@ -2,13 +2,14 @@
 
 function setup_instance {
   export DEBIAN_FRONTEND=noninteractive
+
   sudo apt-get -y update
   sudo apt-get -y upgrade
 
   sudo apt-get install -y software-properties-common # adds add-apt-repository
   sudo add-apt-repository contrib
 
-  sudo apt-get -y install python3-pip libgl1-mesa-glx wget
+  sudo apt-get -y install python3-pip libgl1-mesa-glx wget locales-all
 }
 
 function setup_cuda {
@@ -33,11 +34,19 @@ function setup_cuda {
 function setup_repo {
   rm -rf cloth-segmentation 2> /dev/null
   git clone https://github.com/levindabhi/cloth-segmentation.git
+}
 
-  cp requirements.txt cloth-segmentation/
-  cd cloth-segmentation
-  pip3 install --upgrade pip
-  pip3 install -r requirements.txt
+function setup_conda {
+  wget https://repo.anaconda.com/miniconda/Miniconda3-py37_22.11.1-1-Linux-x86_64.sh -O miniconda-setup.sh
+  perl -i -pe 's/#!\/bin\/sh/#!\/bin\/bash/' miniconda-setup.sh
+  chmod +x miniconda-setup.sh
+  miniconda-setup.sh -fup ~/miniconda
+  ~/miniconda/bin/conda shell.bash hook
+
+  # cp requirements.txt cloth-segmentation/
+  # cd cloth-segmentation
+  # pip3 install --upgrade pip
+  # pip3 install -r requirements.txt
 }
 
 function download_model {
@@ -60,6 +69,6 @@ function download_input {
 setup_instance
 setup_cuda
 setup_repo
-download_model
-download_input
+# download_model
+# download_input
 
