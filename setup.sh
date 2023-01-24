@@ -7,12 +7,19 @@ function setup_instance {
 }
 
 function setup_cuda {
+  # update keys
+  sudo apt-key del 7fa2af80
+  wget https://developer.download.nvidia.com/compute/cuda/repos/debian10/x86_64/cuda-keyring_1.0-1_all.deb
+  sudo dpkg -i cuda-keyring_1.0-1_all.deb
+
+  # download package
   wget https://developer.download.nvidia.com/compute/cuda/11.1.0/local_installers/cuda-repo-debian10-11-1-local_11.1.0-455.23.05-1_amd64.deb
   sudo dpkg -i cuda-repo-debian10-11-1-local_11.1.0-455.23.05-1_amd64.deb
   
-  sudo apt-get intall -y software-properties-common # adds add-apt-repository
+  sudo apt-get install -y software-properties-common # adds add-apt-repository
   sudo add-apt-repository contrib
   
+  # install
   sudo apt-get update
   sudo apt-get -y install cuda
 }
