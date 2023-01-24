@@ -38,15 +38,15 @@ function setup_repo {
 
 function setup_conda {
   wget https://repo.anaconda.com/miniconda/Miniconda3-py37_22.11.1-1-Linux-x86_64.sh -O miniconda-setup.sh
+  # the script doesn't work with pure `sh`
   perl -i -pe 's/#!\/bin\/sh/#!\/bin\/bash/' miniconda-setup.sh
   chmod +x miniconda-setup.sh
-  miniconda-setup.sh -fup ~/miniconda
-  ~/miniconda/bin/conda shell.bash hook
+  ./miniconda-setup.sh -bup ~/miniconda
+  eval "$(~/miniconda/bin/conda shell.bash hook)"
+  conda init
 
-  # cp requirements.txt cloth-segmentation/
-  # cd cloth-segmentation
-  # pip3 install --upgrade pip
-  # pip3 install -r requirements.txt
+  conda config --add channels conda-forge
+  conda install libopencv opencv py-opencv
 }
 
 function download_model {
@@ -68,7 +68,8 @@ function download_input {
 
 setup_instance
 setup_cuda
+setup_conda
 setup_repo
-# download_model
-# download_input
+download_model
+download_input
 
