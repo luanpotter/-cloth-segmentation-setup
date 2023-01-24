@@ -45,6 +45,8 @@ function setup_conda {
   perl -i -pe 's/#!\/bin\/sh/#!\/bin\/bash/' miniconda-setup.sh
   chmod +x miniconda-setup.sh
   ./miniconda-setup.sh -bup ~/miniconda
+  rm miniconda-setup.sh
+
   eval "$(~/miniconda/bin/conda shell.bash hook)"
   conda init
 
