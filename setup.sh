@@ -9,7 +9,6 @@ function setup_instance {
   sudo add-apt-repository contrib
 
   sudo apt-get -y install python3-pip libgl1-mesa-glx wget
-  sudo apt-get -y upgrade python3
 }
 
 function setup_cuda {
@@ -36,6 +35,7 @@ function setup_repo {
 
   cp requirements.txt cloth-segmentation/
   cd cloth-segmentation
+  pip3 install --upgrade pip
   pip3 install -r requirements.txt
 }
 
