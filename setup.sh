@@ -13,8 +13,11 @@ function setup_cuda {
   sudo dpkg -i cuda-keyring_1.0-1_all.deb
 
   # download package
-  wget https://developer.download.nvidia.com/compute/cuda/11.1.0/local_installers/cuda-repo-debian10-11-1-local_11.1.0-455.23.05-1_amd64.deb
-  sudo dpkg -i cuda-repo-debian10-11-1-local_11.1.0-455.23.05-1_amd64.deb
+  deb_file=cuda-repo-debian10-11-1-local_11.1.0-455.23.05-1_amd64.deb
+  if [ ! -f $deb_file ]; then
+    wget https://developer.download.nvidia.com/compute/cuda/11.1.0/local_installers/$deb_file
+    sudo dpkg -i $deb_file
+  fi
   
   sudo apt-get install -y software-properties-common # adds add-apt-repository
   sudo add-apt-repository contrib
