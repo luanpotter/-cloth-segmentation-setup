@@ -9,7 +9,7 @@ function setup_instance {
   sudo apt-get install -y software-properties-common # adds add-apt-repository
   sudo add-apt-repository contrib
 
-  sudo apt-get -y install python3-pip libgl1-mesa-glx wget locales-all
+  sudo apt-get -y install libgl1-mesa-glx wget locales-all
 }
 
 function setup_cuda {
@@ -48,8 +48,10 @@ function setup_conda {
   eval "$(~/miniconda/bin/conda shell.bash hook)"
   conda init
 
-  conda config --add channels conda-forge
-  conda install libopencv opencv py-opencv
+  conda create --name cloth-segmentation python=3
+  conda activate cloth-segmentation
+
+  conda install --yes --file requirements.txt
 }
 
 function download_model {
