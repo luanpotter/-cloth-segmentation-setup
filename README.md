@@ -8,12 +8,18 @@ Note: CUDA is not supported on mac-os
  * You will need a Linux machine with nvidia GPU attached. For example, on GCE you can create one like so:
 
    ```bash
-     gcloud compute instances create <instance name> --machine-type a2-highgpu-1g --zone us-east1-b --boot-disk-size 200GB  --image-family debian-11 --image-project debian-cloud --maintenance-policy TERMINATE --restart-on-failure
+     gcloud compute instances create <instance name> \
+      --machine-type a2-highgpu-1g --zone us-east1-b --boot-disk-size 200GB \
+      --image-family debian-11 --image-project debian-cloud \
+      --maintenance-policy TERMINATE --restart-on-failure
+
+    gcloud compute ssh <instance name>
    ```
 
  * Clone this repo
 
    ```bash
+   sudo apt-get install -y git
    git clone git@github.com:luanpotter/cloth-segmentation-setup.git
    ```
 
