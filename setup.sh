@@ -27,6 +27,7 @@ function setup_cuda {
   # install
   sudo apt-get update
   sudo apt-get -y install cuda
+  sudo apt-get -y install nvidia-cuda-toolkit
 }
 
 function setup_repo {
