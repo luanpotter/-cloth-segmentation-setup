@@ -49,8 +49,9 @@ function setup_conda {
 
   eval "$(~/miniconda/bin/conda shell.bash hook)"
   conda init
+  conda install conda=23.1.0 --yes
 
-  conda create --name cloth-segmentation python=3
+  conda create --name cloth-segmentation python=3 --yes
   conda activate cloth-segmentation
 
   conda install --yes --file requirements.txt
