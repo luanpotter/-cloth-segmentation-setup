@@ -20,7 +20,7 @@ Note: CUDA is not supported on mac-os
 
    ```bash
    sudo apt-get install -y git
-   git clone git@github.com:luanpotter/cloth-segmentation-setup.git
+   git clone https://github.com/luanpotter/cloth-segmentation-setup.git
    ```
 
  * Create a `input-images` file on the repo root with a new-line separated list of URLs with the source images.
