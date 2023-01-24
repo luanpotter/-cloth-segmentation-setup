@@ -54,6 +54,7 @@ function setup_conda {
   conda create --name cloth-segmentation python=3 --yes
   conda activate cloth-segmentation
 
+  conda config --add channels conda-forge
   conda install --yes --file requirements.txt
 }
 
