@@ -1,9 +1,18 @@
 #!/bin/bash -xe
 
 function setup_instance {
+  export DEBIAN_FRONTEND=noninteractive
   sudo apt-get -y update
   sudo apt-get -y upgrade
+
+  sudo apt-get install -y software-properties-common # adds add-apt-repository
+  sudo add-apt-repository testing
+  sudo add-apt-repository non-free
+  sudo add-apt-repository contrib
+  sudo add-apt-repository main
+
   sudo apt-get -y install python3-pip libgl1-mesa-glx wget
+  sudo apt-get -y upgrade python3
 }
 
 function setup_cuda {
@@ -19,8 +28,6 @@ function setup_cuda {
     sudo dpkg -i $deb_file
   fi
   
-  sudo apt-get install -y software-properties-common # adds add-apt-repository
-  sudo add-apt-repository contrib
   
   # install
   sudo apt-get update
