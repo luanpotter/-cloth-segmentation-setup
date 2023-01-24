@@ -3,7 +3,7 @@
 function setup_instance {
   sudo apt-get -y update
   sudo apt-get -y upgrade
-  sudo apt-get -y install python3-pip libgl1-mesa-glx
+  sudo apt-get -y install python3-pip libgl1-mesa-glx wget
 }
 
 function setup_repo {
