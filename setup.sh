@@ -37,6 +37,7 @@ function setup_cuda {
 function setup_repo {
   rm -rf cloth-segmentation 2> /dev/null
   git clone https://github.com/levindabhi/cloth-segmentation.git
+  cd cloth-segmentation
 }
 
 function setup_conda {
@@ -81,4 +82,3 @@ setup_conda
 setup_repo
 download_model
 download_input
-
