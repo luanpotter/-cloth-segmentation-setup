@@ -1,5 +1,11 @@
 #!/bin/bash -xe
 
+function setup_instance {
+  sudo apt-get -y update
+  sudo apt-get -y upgrade
+  sudo apt-get -y install python3-pip libgl1-mesa-glx
+}
+
 function setup_repo {
   git clone https://github.com/levindabhi/cloth-segmentation.git
 
@@ -25,12 +31,8 @@ function download_input {
   cd ..
 }
 
-function run_model {
-  python3 infer.py
-}
-
 rm -rf cloth-segmentation 2> /dev/null
+setup_instance
 setup_repo
 download_model
 download_input
-run_model
