@@ -1,10 +1,17 @@
 # cloth-segmentation-setup
 
 Basic setup to be able to run [levindabhi/cloth-segmentation](https://github.com/levindabhi/cloth-segmentation)  
+Note: CUDA is not supported on mac-os
 
 ## Instructions
 
- * Clone this repo on a linux machine (CUDA doesn't work on macos)
+ * You will need a Linux machine with nvidia GPU attached. For example, on GCE you can create one like so:
+
+   ```bash
+     gcloud compute instances create <instance name> --machine-type a2-highgpu-1g --zone us-east1-b --boot-disk-size 200GB  --image-family debian-11 --image-project debian-cloud --maintenance-policy TERMINATE --restart-on-failure
+   ```
+
+ * Clone this repo
 
    ```bash
    git clone git@github.com:luanpotter/cloth-segmentation-setup.git
