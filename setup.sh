@@ -6,10 +6,7 @@ function setup_instance {
   sudo apt-get -y upgrade
 
   sudo apt-get install -y software-properties-common # adds add-apt-repository
-  sudo add-apt-repository testing
-  sudo add-apt-repository non-free
   sudo add-apt-repository contrib
-  sudo add-apt-repository main
 
   sudo apt-get -y install python3-pip libgl1-mesa-glx wget
   sudo apt-get -y upgrade python3
@@ -27,7 +24,6 @@ function setup_cuda {
     wget https://developer.download.nvidia.com/compute/cuda/11.1.0/local_installers/$deb_file
     sudo dpkg -i $deb_file
   fi
-  
   
   # install
   sudo apt-get update
