@@ -1,16 +1,19 @@
 # cloth-segmentation-setup
 
-Basic setup to be able to run [levindabhi/cloth-segmentation](https://github.com/levindabhi/cloth-segmentation)  
-Note: CUDA is not supported on mac-os
+Basic setup to be able to run [levindabhi/cloth-segmentation](https://github.com/levindabhi/cloth-segmentation)
+
+*Note*: CUDA is not supported on macOS!
 
 ## Instructions
 
- * You will need a Linux machine with nvidia GPU attached. For example, on GCE you can create one like so:
+ * You will need a Linux machine with nvidia GPU attached.
+
+   For example, on GCE you can create a2-highgpu-1g with Debian 10:
 
    ```bash
      gcloud compute instances create <instance name> \
       --machine-type a2-highgpu-1g --zone us-east1-b --boot-disk-size 200GB \
-      --image-family debian-11 --image-project debian-cloud \
+      --image-family debian-10 --image-project debian-cloud \
       --maintenance-policy TERMINATE --restart-on-failure
 
     gcloud compute ssh <instance name>
