@@ -19,7 +19,7 @@ function download_model {
   cd trained_checkpoint
 
   pip3 install gdown
-  gdown "1mhF3yqd7R-Uje092eypktNl-RoZNuiCJ"
+  ~/.local/bin/gdown "1mhF3yqd7R-Uje092eypktNl-RoZNuiCJ"
 
   cd ..
 }
