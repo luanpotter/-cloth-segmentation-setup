@@ -51,12 +51,12 @@ function setup_conda {
   eval "$(~/miniconda/bin/conda shell.bash hook)"
   conda init
   conda install conda=23.1.0 --yes
+  conda config --add channels conda-forge
 
   conda create --name cloth-segmentation python=3 --yes
   conda activate cloth-segmentation
 
-  conda config --add channels conda-forge
-  conda install --yes --file requirements.txt
+  conda install --yes numpy anaconda opencv
 }
 
 function download_model {
