@@ -49,7 +49,7 @@ function setup_conda {
   rm miniconda-setup.sh
 
   eval "$(~/miniconda/bin/conda shell.bash hook)"
-  conda init
+  conda init bash
   conda install conda=23.1.0 --yes
   conda config --add channels conda-forge
 
