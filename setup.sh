@@ -56,7 +56,7 @@ function setup_conda {
   conda create --name cloth-segmentation python=3 --yes
   conda activate cloth-segmentation
 
-  conda install --yes numpy anaconda opencv
+  conda install --force-reinstall --yes numpy anaconda opencv pytorch torchvision cudatoolkit
 }
 
 function download_model {
