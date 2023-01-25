@@ -22,16 +22,16 @@ function setup_cuda {
   sudo dpkg -i $keyring
 
   # download package
-  deb_file=cuda-repo-debian10-11-1-local_11.1.0-455.23.05-1_amd64.deb
+  deb_file=cuda-repo-debian11-11-7-local_11.7.1-515.65.01-1_amd64.deb
   if [ ! -f $deb_file ]; then
-    wget https://developer.download.nvidia.com/compute/cuda/11.1.0/local_installers/$deb_file
+    wget https://developer.download.nvidia.com/compute/cuda/11.7.1/local_installers/$deb_file
   fi
   sudo dpkg -i $deb_file
-  
-  # install
+
+  sudo cp /var/cuda-repo-debian11-11-7-local/cuda-*-keyring.gpg /usr/share/keyrings/
+  sudo add-apt-repository contrib
   sudo apt-get update
   sudo apt-get -y install cuda
-  sudo apt-get -y install nvidia-cuda-toolkit
 }
 
 function setup_repo {
@@ -50,13 +50,13 @@ function setup_conda {
 
   eval "$(~/miniconda/bin/conda shell.bash hook)"
   conda init bash
+  # update conda
   conda install conda=23.1.0 --yes
-  conda config --add channels conda-forge
 
-  conda create --name cloth-segmentation python=3 --yes
+  conda create --name cloth-segmentation python=3
   conda activate cloth-segmentation
 
-  conda install --force-reinstall --yes numpy anaconda opencv pytorch torchvision cudatoolkit
+  conda install --force-reinstall --yes pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
 }
 
 function download_model {
