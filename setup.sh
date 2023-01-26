@@ -41,19 +41,21 @@ function setup_repo {
 }
 
 function setup_conda {
-  wget https://repo.anaconda.com/miniconda/Miniconda3-py37_22.11.1-1-Linux-x86_64.sh -O miniconda-setup.sh
-  # the script doesn't work with pure `sh`
-  perl -i -pe 's/#!\/bin\/sh/#!\/bin\/bash/' miniconda-setup.sh
-  chmod +x miniconda-setup.sh
-  ./miniconda-setup.sh -bup ~/miniconda
-  rm miniconda-setup.sh
+  if [ ! -f ~/miniconda ]; then
+    wget https://repo.anaconda.com/miniconda/Miniconda3-py37_22.11.1-1-Linux-x86_64.sh -O miniconda-setup.sh
+    # the script doesn't work with pure `sh`
+    perl -i -pe 's/#!\/bin\/sh/#!\/bin\/bash/' miniconda-setup.sh
+    chmod +x miniconda-setup.sh
+    ./miniconda-setup.sh -bup ~/miniconda
+    rm miniconda-setup.sh
+  fi
 
   eval "$(~/miniconda/bin/conda shell.bash hook)"
   conda init bash
   # update conda
   conda install conda=23.1.0 --yes
 
-  conda create --name cloth-segmentation python=3
+  conda create --name cloth-segmentation python=3 --yes
   conda activate cloth-segmentation
 
   conda install --force-reinstall --yes pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
