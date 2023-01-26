@@ -65,8 +65,8 @@ function download_model {
   mkdir trained_checkpoint
   cd trained_checkpoint
 
-  pip3 install gdown
-  ~/.local/bin/gdown "1mhF3yqd7R-Uje092eypktNl-RoZNuiCJ"
+  conda install gdown --yes
+  gdown "1mhF3yqd7R-Uje092eypktNl-RoZNuiCJ"
 
   cd ..
 }
