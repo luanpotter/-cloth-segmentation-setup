@@ -41,7 +41,7 @@ function setup_repo {
 }
 
 function setup_conda {
-  if [ ! -f ~/miniconda ]; then
+  if [ ! -d ~/miniconda ]; then
     wget https://repo.anaconda.com/miniconda/Miniconda3-py37_22.11.1-1-Linux-x86_64.sh -O miniconda-setup.sh
     # the script doesn't work with pure `sh`
     perl -i -pe 's/#!\/bin\/sh/#!\/bin\/bash/' miniconda-setup.sh
@@ -58,6 +58,7 @@ function setup_conda {
   conda create --name cloth-segmentation python=3 --yes
   conda activate cloth-segmentation
 
+  conda install --force-reinstall --yes -c conda-forge opencv
   conda install --force-reinstall --yes pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
 }
 
