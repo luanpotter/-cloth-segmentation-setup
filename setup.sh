@@ -59,7 +59,7 @@ function setup_conda {
   conda activate cloth-segmentation
 
   conda install --yes -c conda-forge opencv
-  conda install --yes tqdm pillow
+  conda install --yes tqdm pillow=6.1
   conda install --force-reinstall --yes pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
 }
 
